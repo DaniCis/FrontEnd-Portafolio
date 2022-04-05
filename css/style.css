@@ -3,12 +3,12 @@
 :root {
   --dark-one: rgb(58, 58, 58);
   --dark-two: #7a7a7a;
-  --main-color: #9d83ea;
+  --main-color: #864a92;
   --light-one: #fff;
   --light-two: #f9fafb;
   --light-three: #f6f7fb;
+  --main-hover:#d36de5;
 }
-
 /* General */
 *,
 *::before,
@@ -81,10 +81,6 @@ img {
   top: 0;
   left: 0;
 }
-.points {
-  opacity: 0.3;
-  position: absolute;
-}
 .section {
   padding: 3rem 0;
   overflow: hidden;
@@ -131,9 +127,6 @@ img {
   font-weight: 600;
   font-size: 1.3rem;
 }
-.points-sq {
-  width: 210px;
-}
 .btn {
   display: inline-block;
   padding: 0.85rem 2rem;
@@ -146,7 +139,7 @@ img {
   transition: 0.3s;
 }
 .btn:hover {
-  background-color: #6b44e0;
+  background-color: var(--main-hover)
 }
 .btn.small {
   padding: 0.7rem 1.8rem;
@@ -203,7 +196,7 @@ nav .container {
 }
 .links a.active:hover {
   color: var(--light-one);
-  background-color: #6b44e0;
+  background-color: var(--main-hover);
 }
 .hamburger-menu {
   width: 2.7rem;
@@ -261,7 +254,7 @@ nav.open .links {
 }
 .header-title {
   font-size: 3.8rem;
-  line-height: 0.8;
+  line-height: 1.2;
   color: var(--dark-one);
 }
 .header-content .text {
@@ -270,12 +263,36 @@ nav.open .links {
 .header-content .image .img-element {
   max-width: 450px;
 }
-.letters {
-  position: absolute;
-  width: 13.5%;
-  top: -5px;
-  left: 15px;
-  opacity: 0.06;
+.main-heading {
+  font-weight: 300;
+  font-size: 45px;
+}
+.main-heading__emphasis {
+  font-weight: 600;
+  color: var(--main-color);
+}
+.typing-wrapper {
+  display: inline-flex;
+}
+.typed-out {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 2s steps(32, end) forwards;
+}
+.cursor {
+  margin-left: 5px;
+  width: 5px;
+  background: transparent;
+  animation: blink 0.9s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  from, to { background: transparent;}
+  50% { background: black}
 }
 /* End header */
 
@@ -484,7 +501,7 @@ nav.open .links {
   overflow: hidden;
 }
 .about img {
-  max-width: 450px;
+  max-width: 550px;
 }
 .about .text {
   margin-top: 1rem;
@@ -745,7 +762,7 @@ nav.open .links {
   transition: 0.3s;
 }
 .input-arrow:hover {
-  background-color: #6b44e0;
+  background-color: var(--main-hover);
 }
 .focus {
   background: #fff;
@@ -815,7 +832,7 @@ nav.open .links {
   z-index: 2;
 }
 .back-btn:hover {
-  background-color: #4f32a4;
+  background-color: var(--main-hover);
 }
 .back-btn-wrap:before {
   content: "";
