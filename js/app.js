@@ -1,3 +1,6 @@
+const contactForm = getElementById('contacto')
+const errorDiv = getElementById('error')
+
 const filter_btns = document.querySelectorAll(".filter-btn");
 const skills_wrap = document.querySelector(".skills");
 const skills_bars = document.querySelectorAll(".skill-progress");
@@ -7,6 +10,25 @@ const footer_input = document.querySelector(".footer-input");
 const hamburger_menu = document.querySelector(".hamburger-menu");
 const navbar = document.querySelector("header nav");
 const links = document.querySelectorAll(".links a");
+
+contactForm.onSubmit = function(event){
+  event.preventDefault()
+  const nombre = event.target.nombre.value
+  const apellido = event.target.asunto.value
+  const celular = event.target.asunto.value
+  const email = event.target.email.value
+  const mensaje = event.target.mensaje.value
+
+  if(nombre!="" && email!="" && asunto!="" && mensaje!="" && celular !=""){
+      console.log("Datos correctos!")
+      event.target.submit()
+  }else{
+      errorDiv.innerHTML=""
+      const p = document.createElement("p")
+      p.innerText = "Datos incorrectos! Favor de verificar"
+      errorDiv.appendChild(p)
+  }
+}
 
 footer_input.addEventListener("focus", () => {
   footer_input.classList.add("focus");
@@ -26,9 +48,8 @@ hamburger_menu.addEventListener("click", () => {
   if (!navbar.classList.contains("open")) {
     navbar.classList.add("open");
     document.body.classList.add("stop-scrolling");
-  } else {
+  } else 
     closeMenu();
-  }
 });
 
 links.forEach((link) => link.addEventListener("click", () => closeMenu()));
@@ -37,9 +58,7 @@ filter_btns.forEach((btn) =>
   btn.addEventListener("click", () => {
     filter_btns.forEach((button) => button.classList.remove("active"));
     btn.classList.add("active");
-
     let filterValue = btn.dataset.filter;
-
     $(".grid").isotope({ filter: filterValue });
   })
 );
@@ -85,16 +104,3 @@ function countUp() {
     setTimeout(updateCount, 400);
   });
 }
-
-var mySwiper = new Swiper(".swiper-container", {
-  speed: 1100,
-  slidesPerView: 1,
-  loop: true,
-  autoplay: {
-    delay: 5000,
-  },
-  navigation: {
-    prevEl: ".swiper-button-prev",
-    nextEl: ".swiper-button-next",
-  },
-});
